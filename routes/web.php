@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Admin'], function() {
 
 //Client
 Route::group(['namespace' => 'Client'], function() {
-    Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => ['auth', 'user']], function() {
         Route::get('/', 'StoreController@index')->name('users.index');
         Route::get('/stores/{store}', 'StoreController@show')->name('stores.show');
         Route::get('/import/{store}', 'StoreController@import')->name('stores.import');

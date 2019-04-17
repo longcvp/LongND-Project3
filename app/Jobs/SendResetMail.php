@@ -19,6 +19,9 @@ class SendResetMail implements ShouldQueue
      *
      * @return void
      */
+    protected $user;
+    protected $password;
+    
     public function __construct($password, $user)
     {
         $this->user = $user;
@@ -32,8 +35,6 @@ class SendResetMail implements ShouldQueue
      */
     public function handle()
     {
-        sleep(60);
-
         echo 'Start send email';
         
         $email = new ResetPassword($this->password, $this->user->username);

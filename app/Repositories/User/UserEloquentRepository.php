@@ -80,8 +80,9 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         ];
         $this->_model->whereIn('id', $data->checked)->update($userData);
         foreach ($data->checked as $id) {
+            $time = 60;
             $user = $this->_model->find($id);
-            //dispatch(new SendResetMail($password, $user));
+            dispatch(new SendResetMail($password, $user))->delay(now()->addSeconds($time));
         }
     }
 }

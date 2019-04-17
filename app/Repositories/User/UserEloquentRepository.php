@@ -73,16 +73,16 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
 
     public function resetPass($data)
     {
-        $password = '123456';
-        $userData = [
-            'password' => bcrypt($password),
-            'reset_password' => RESET_PASS    
-        ];
-        $this->_model->whereIn('id', $data->checked)->update($userData);
         foreach ($data->checked as $id) {
+            $password = str_random(6);
+            $userData = [
+                'password' => bcrypt($password),
+                'reset_password' => RESET_PASS    
+            ];
             $time = 60;
             $user = $this->_model->find($id);
             dispatch(new SendResetMail($password, $user))->delay(now()->addSeconds($time));
+            $user->update($userData);
         }
     }
 }

@@ -43,7 +43,7 @@ class AuthController extends Controller
         } else {
             $errors = new MessageBag(['errorlogin' => 'Tên đăng nhập hoặc mật khẩu không đúng']);
             return redirect()->back()->withInput()->withErrors($errors);
-        }       
+        }
     }
 
     public function getLogOut() 
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
     public function getResetPassword($id)
     {
-        if (Auth::id() != $id){
+        if (Auth::id() != $id) {
             return redirect()->back();
         } else {
             return view('auth.reset');
@@ -67,27 +67,4 @@ class AuthController extends Controller
         $this->user->changeData($request);
         return redirect()->route('admin.index')->with('success','Mật khẩu của bạn đã được thay đổi');
     }
-
-    // public function authToken($token)
-    // {
-    //     $data = $this->active->getUserByToken($token);
-    //     if (is_null($data)) {
-    //         return redirect()->route('login.index')->with('error', 'Không thể xác thực tài khoản!');
-    //     } else {
-    //         $this->user->authLogin($data->user_id);
-    //         $this->active->deleteToken($token);
-    //         return redirect()->route('login.index')->with('success', 'Xác thực đăng kí thành công! Bạn có thể đăng nhập');
-    //     }   
-    // }
-
-    // public function getReset()
-    // {
-    //     return view('auth.reset');
-    // }
-
-    // public function postReset(ResetPassRequest $req)
-    // {
-    //     $this->user->resetPass($req->email);
-    //      return redirect()->route('login.index')->with('success', 'Đặt lại mật khẩu thành công! Kiểm tra email và đăng nhập');
-    // }
 }

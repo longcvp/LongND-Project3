@@ -52,7 +52,8 @@ class StoreController extends Controller
     public function store(StoreRequest $request)
     {
         $this->store->createStore($request);
-        return redirect()->route('stores.index')->with('success', 'Thêm kho thành công');
+        return redirect()->route('stores.index')
+                            ->with('success', 'Thêm kho thành công');
     }
 
     /**

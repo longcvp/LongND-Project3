@@ -107,7 +107,7 @@ class UserController extends Controller
             $this->user->resetPass($req);
             return redirect()->route('admin.index')
                              ->with('success', 'Reset mật khẩu thành công');
-        }        
+        }
     }
 
     public function excelUser()

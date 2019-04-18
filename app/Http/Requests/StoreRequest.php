@@ -34,7 +34,7 @@ class StoreRequest extends FormRequest
             return [
                 'storename' => 'required|unique:stores,name,'.$id.',id',
                 'manager' => 'required',
-            ];            
+            ];
         }
     }
 }

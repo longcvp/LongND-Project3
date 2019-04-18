@@ -16,14 +16,14 @@ class UserConfirm extends Model
 
     public function user()
     {
-    	return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function findByToken($token)
     {
         $data = '';
-    	$data = $this->where('token', $token)->firstOrFail();
-    	return $data;
+        $data = $this->where('token', $token)->firstOrFail();
+        return $data;
     }
 
     public function deleteByToken($token)

@@ -35,21 +35,21 @@ class ChangePasswordRequest extends FormRequest
                                         $fail(Lang::get('validation.update_custom.password'));
                                     }
                                 }],
-                'password'          =>  'required|different:old_password|min:6',
-                'confirm_password'   =>  'required|same:password',
-            ];            
+                'password' => 'required|different:old_password|min:6',
+                'confirm_password' => 'required|same:password',
+            ];
         } else {
             return [
-                'email'             =>  'bail|required|email|unique:users,email',
+                'email' => 'bail|required|email|unique:users,email',
                 'old_password' => ['required',function ($attribute, $value, $fail) {
                                     if (! Hash::check($value, Auth::user()->password)) {
                                         $fail(Lang::get('validation.update_custom.password'));
                                     }
                                 }],
-                'name'             =>  'required',
-                'password'          =>  'required|different:old_password|min:6',
-                'confirm_password'   =>  'required|same:password',
-            ];            
+                'name' => 'required',
+                'password' => 'required|different:old_password|min:6',
+                'confirm_password' => 'required|same:password',
+            ];
         }
     }
 

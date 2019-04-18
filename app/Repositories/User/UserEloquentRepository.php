@@ -1,7 +1,6 @@
 <?php
 namespace App\Repositories\User;
-    
-use File;
+
 use App\Models\User;
 use App\Models\UserConfirm;
 use App\Mail\ActiveMail;
@@ -49,12 +48,6 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             throw new MailException('progress.sentMailError');
         }        
     }
-
-    // public function authLogin($id)
-    // {
-    //     $user = $this->_model->find($id);
-    //     $user->update(['active' => ACTIVE]);
-    // }
 
     public function changeData($data)
     {

@@ -22,7 +22,8 @@ class Product extends Model
 
     public function stores()
     {
-        return $this->belongsToMany(Product::class, 'product_store')->withPivot('count');
+        return $this->belongsToMany(Product::class, 'product_store')
+                    ->withPivot('count');
     }
 
 }

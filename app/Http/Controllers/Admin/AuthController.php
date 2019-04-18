@@ -65,6 +65,7 @@ class AuthController extends Controller
     public function postResetPassword(ChangePasswordRequest $request, $id)
     {
         $this->user->changeData($request);
-        return redirect()->route('admin.index')->with('success','Mật khẩu của bạn đã được thay đổi');
+        return redirect()->route('admin.index')
+                         ->with('success','Mật khẩu của bạn đã được thay đổi');
     }
 }

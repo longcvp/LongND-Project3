@@ -85,7 +85,8 @@ class StoreController extends Controller
     public function exportStore(ExportRequest $req)
     {
         $this->store->updateExport($req);
-        return redirect()->route('stores.show', $req->store_id)->with('success', 'Xuất hàng thành công!');
+        return redirect()->route('stores.show', $req->store_id)
+                         ->with('success', 'Xuất hàng thành công!');
     }
 
     public function export($id)
@@ -103,7 +104,8 @@ class StoreController extends Controller
     public function importStore(ImportRequest $req)
     {
         $this->store->updateImport($req);
-        return redirect()->route('stores.show', $req->store_id)->with('success', 'Nhập hàng hàng thành công!');
+        return redirect()->route('stores.show', $req->store_id)
+                         ->with('success', 'Nhập hàng hàng thành công!');
     }
     /**
      * Update the specified resource in storage.
@@ -139,13 +141,15 @@ class StoreController extends Controller
         if ($checkData->user_id != Auth::id()) {
             return redirect()->back();
         } else {
-            return Excel::download(new StoreExport($this->store, $id), 'store_'.$id.'.xlsx');
+            return Excel::download(new StoreExport($this->store, $id), 
+                'store_'.$id.'.xlsx');
         }
         
     }
 
     public function excelStoreUser()
     {
-        return Excel::download(new StoreUserExport($this->store), 'user_'.Auth::id().'.xlsx');
+        return Excel::download(new StoreUserExport($this->store), 
+            'user_'.Auth::id().'.xlsx');
     }
 }

@@ -28,7 +28,8 @@ class Store extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_store')->withPivot('count');
+        return $this->belongsToMany(Product::class, 'product_store')
+                    ->withPivot('count');
     }
 
     public function getDataStore()
@@ -69,15 +70,17 @@ class Store extends Model
     public function updateExport($data)
     {
         $store = $this->find($data->store_id);
+        $productId = $data->product_id;
         $updateData = ['count' => ($data->count_product - $data->count)];
-        return $store->products()->updateExistingPivot($data->product_id, $updateData);
+        return $store->products()->updateExistingPivot($productId, $updateData);
     }
 
     public function updateImport($data)
     {
         $store = $this->find($data->store_id);
+        $productId = $data->product_id;
         $updateData = ['count' => ($data->count_product + $data->count)];
-        return $store->products()->updateExistingPivot($data->product_id, $updateData);        
+        return $store->products()->updateExistingPivot($productId, $updateData);        
     }
 
     public function createImport($data)

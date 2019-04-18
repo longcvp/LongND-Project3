@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,63 +44,59 @@
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <div class="navbar-header">
-                   @guest
-                   @elseif(Auth::user()->is_root == ROOT)
+                @guest
+                @elseif(Auth::user()->is_root == ROOT)
                   <a class="navbar-brand" href="{{ route('admin.index') }}">{{ __('layout.manage_store')}}</a>
-                  @else
+                @else
                   <a class="navbar-brand" href="{{ route('users.index') }}">{{ __('layout.manage_store')}}</a>
-                  @endguest
+                @endguest
                 </div>
                 @guest           
                 @elseif(Auth::user()->is_root == ROOT)
-                <ul class="nav navbar-nav">
-                  <li><a href="{{ route('admin.index') }}">{{ __('layout.manage_user_store')}}</a></li>
-                  <li><a href="{{ route('stores.index') }}">{{ __('layout.manage_list_store')}}</a></li>
-                </ul>
+                    <ul class="nav navbar-nav">
+                      <li><a href="{{ route('admin.index') }}">{{ __('layout.manage_user_store')}}</a></li>
+                      <li><a href="{{ route('stores.index') }}">{{ __('layout.manage_list_store')}}</a></li>
+                    </ul>
                 @else
-                <ul class="nav navbar-nav">
-                  <li><a href="{{ route('users.index') }}">{{ __('layout.product_title')}}</a></li>
-                </ul>                          
+                    <ul class="nav navbar-nav">
+                      <li><a href="{{ route('users.index') }}">{{ __('layout.product_title')}}</a></li>
+                    </ul>                          
                 @endguest
                 <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown navbar-nav">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ __('layout.choose_language') }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ route('lang', ['lang' => 'vi']) }}">VI</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('lang', ['lang' => 'en' ]) }}">EN</a>
-                                </li>
-                            </ul>
-                        </li>
-                        @guest
-                        <li class="dropdown navbar-nav">
-                            <a class="dropdown-toggle" href="{{ route('login.index') }}"><span class="glyphicon glyphicon-log-in"></span> {{ __('auth.login') }}</a>
-                        </li>             
-                        @else
-                        <li class="dropdown navbar-nav">
-                            <a href="{{ route('admin.index') }}" class="dropdown-toggle" data-toggle="dropdown" style="position: relative; padding-left:50px;">
-                                {{ __('layout.welcome', ['name' => (Auth::user()->name == '') ? 'Name' : Auth::user()->name]) }}
-                            </a>    
-                        </li>
-                        <li class="dropdown navbar-nav">
-                            <a href="{{ route('logout') }}" ><span class="glyphicon glyphicon-log-out"></span> {{ __('auth.logout') }}</a>
-                        </li>
-                        @endguest
-
-                  
+                    <li class="dropdown navbar-nav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ __('layout.choose_language') }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('lang', ['lang' => 'vi']) }}">VI</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('lang', ['lang' => 'en' ]) }}">EN</a>
+                            </li>
+                        </ul>
+                    </li>
+                    @guest
+                    <li class="dropdown navbar-nav">
+                        <a class="dropdown-toggle" href="{{ route('login.index') }}"><span class="glyphicon glyphicon-log-in"></span> {{ __('auth.login') }}</a>
+                    </li>             
+                    @else
+                    <li class="dropdown navbar-nav">
+                        <a href="{{ route('admin.index') }}" class="dropdown-toggle" data-toggle="dropdown" style="position: relative; padding-left:50px;">
+                            {{ __('layout.welcome', ['name' => (Auth::user()->name == '') ? 'Name' : Auth::user()->name]) }}
+                        </a>    
+                    </li>
+                    <li class="dropdown navbar-nav">
+                        <a href="{{ route('logout') }}" ><span class="glyphicon glyphicon-log-out"></span> {{ __('auth.logout') }}</a>
+                    </li>
+                    @endguest
                 </ul>
               </div>
             </nav>
         </div>
-	<div class="container">
-		<div class="row">
-				    <!-- /.content-wrapper -->
-	    	@yield('content')		
-
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            @yield('content')
+        </div>
+    </div>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.select-js').select2();

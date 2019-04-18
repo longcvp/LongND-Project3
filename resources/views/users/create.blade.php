@@ -3,11 +3,11 @@
 {{ __('root.create_title') }}
 @endsection
 @section('content')
-	<div class="conten-wrapper">
-		<section class="content container-fluid">
-			<div class="container">
-				<h2>{{ __('root.create_title') }}</h2>
-				<form class="form-horizontal" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data" >
+    <div class="conten-wrapper">
+        <section class="content container-fluid">
+            <div class="container">
+                <h2>{{ __('root.create_title') }}</h2>
+                <form class="form-horizontal" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                     <div class="form-group">
                         <p style="text-align: center;"><span class="error">* {{ __('auth.required') }}</span></p>
@@ -55,14 +55,14 @@
                             <button type="submit" class="btn btn-primary">
                                 {{ __('root.create') }}
                             </button>
-							<a href="{{ route("admin.index") }}" type="button" class="btn btn-info">{{ __('root.back') }}</a>
+                            <a href="{{ route("admin.index") }}" type="button" class="btn btn-info">{{ __('root.back') }}</a>
                         </div>
 
                     </div>
                  </form>
             </div>
-		</section>	
-	</div>
+        </section>  
+    </div>
 @endsection
 @section('css')
 <style type="text/css">

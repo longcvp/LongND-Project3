@@ -70,26 +70,33 @@ class Store extends Model
     {
         $store = $this->find($data->store_id);
         $updateData = ['count' => ($data->count_product - $data->count)];
-        $store->products()->updateExistingPivot($data->product_id, $updateData);
+        return $store->products()->updateExistingPivot($data->product_id, $updateData);
     }
 
     public function updateImport($data)
     {
         $store = $this->find($data->store_id);
         $updateData = ['count' => ($data->count_product + $data->count)];
-        $store->products()->updateExistingPivot($data->product_id, $updateData);        
+        return $store->products()->updateExistingPivot($data->product_id, $updateData);        
     }
 
     public function createImport($data)
     {
-        $store = $this->find($data->store_id);
-        $updateData = ['count' => $data->count];
-        $product = Product::where('name' , $data->product_name)->first();
+        $store = $this->with('products')->find($data->store_id);
+        $product = Product::where('name', $data->product_name)->first();
         if (!$product) {
+            $updateData = ['count' => $data->count];
             $product_id = Product::create(['name' => $data->product_name]);
+
+            return $store->products()->attach($product_id, $updateData); 
         } else {
+            $oldCount = $store->products->find($product->id)->pivot->count;
+            $updateData = ['count' => $data->count + $oldCount];
             $product_id = $product->id;
+            
+            return $store->products()->updateExistingPivot($product_id, $updateData); 
         }
-        $store->products()->attach($product_id, $updateData);         
+
+                
     }
 }

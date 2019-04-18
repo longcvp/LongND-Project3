@@ -42,7 +42,7 @@
 
                         <div class="col-md-6">
                             <select class="selectpicker form-control" name="type" id="type" required>
-                                <option selected value="">{{ __('root.type') }}</option>
+                                <option selected value="0">{{ __('root.type') }}</option>
                                 <option value="1">{{ __('root.type_new') }}</option>
                                 <option value="2">{{ __('root.type_old') }}</option>
                             </select>
@@ -136,20 +136,24 @@
         $('#product_trans').hide();
         $('#product_count').hide();
         $("select[name='type']").on('change',function() {
-            var type = $(this).val(); 
-            if(type == 1) {
+            var type = $(this).val();
+            if (type == 1) {
                 $('#product_count').hide();
                 $('#product_new').show();
                 $('#product_trans').hide();
-            } else {
+            } else if (type == 2) {
                 $('#product_count').show();
                 $('#product_new').hide();
                 $('#product_trans').show();
+            } else {
+                $('#product_new').hide();
+                $('#product_trans').hide();
+                $('#product_count').hide();                
             }
         });
         $("select[name='product_id']").on('change',function() {
-            var product_id = $(this).val();  
-            if(product_id != 0){
+            var product_id = $(this).val();
+            if (product_id != 0) {
                 $.ajax({
                     type:'POST',
                     headers: {
@@ -163,7 +167,7 @@
                         $('#count_product').val(result);
                     }
                 }); 
-            }
+            } 
         });
 });
 </script>

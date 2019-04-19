@@ -56,6 +56,5 @@ class StoreEloquentRepository extends EloquentRepository implements StoreReposit
         } else {
             return $this->_model->updateImport($data);
         }
-        
     }
 }

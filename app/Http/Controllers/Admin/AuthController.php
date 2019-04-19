@@ -41,8 +41,13 @@ class AuthController extends Controller
         if ( Auth::attempt(['username' => $username, 'password' => $password])) {
             return redirect()->route('admin.index'); 
         } else {
-            $errors = new MessageBag(['errorlogin' => 'Tên đăng nhập hoặc mật khẩu không đúng']);
-            return redirect()->back()->withInput()->withErrors($errors);
+            $errors = new MessageBag([
+                'errorlogin' => 'Tên đăng nhập hoặc mật khẩu không đúng'
+            ]);
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($errors);
         }
     }
 

@@ -90,7 +90,8 @@ class StoreController extends Controller
     public function update(StoreRequest $request, $id)
     {
         $this->store->editStore($request);
-        return redirect()->route('stores.index')->with('success', 'Thêm kho thành công');
+        return redirect()->route('stores.index')
+                         ->with('success', 'Thêm kho thành công');
     }
 
     /**

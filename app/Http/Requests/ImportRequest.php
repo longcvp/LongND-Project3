@@ -28,12 +28,12 @@ class ImportRequest extends FormRequest
         if ($type == 1) {
             return [
                 'product_name' => 'required',
-                'count' => 'required|numeric|min:0',
+                'count' => 'required|numeric|min:1',
             ];
         } else {
             return [
                 'product_id' => 'required',
-                'count' => 'required|numeric|min:0',
+                'count' => 'required|numeric|min:1',
             ];
         }
     }

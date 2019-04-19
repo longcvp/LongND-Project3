@@ -71,8 +71,12 @@ class Store extends Model
     {
         $store = $this->find($data->store_id);
         $productId = $data->product_id;
-        $updateData = ['count' => ($data->count_product - $data->count)];
-        return $store->products()->updateExistingPivot($productId, $updateData);
+        if ($data->count_product - $data->count == 0) {
+            return $store->products()->detach($productId);
+        } else {
+            $updateData = ['count' => ($data->count_product - $data->count)];
+            return $store->products()->updateExistingPivot($productId, $updateData);
+        }
     }
 
     public function updateImport($data)

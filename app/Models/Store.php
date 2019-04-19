@@ -80,7 +80,7 @@ class Store extends Model
         $store = $this->find($data->store_id);
         $productId = $data->product_id;
         $updateData = ['count' => ($data->count_product + $data->count)];
-        return $store->products()->updateExistingPivot($productId, $updateData);        
+        return $store->products()->updateExistingPivot($productId, $updateData);
     }
 
     public function createImport($data)
@@ -90,16 +90,11 @@ class Store extends Model
         if (!$product) {
             $updateData = ['count' => $data->count];
             $product_id = Product::create(['name' => $data->product_name]);
-
             return $store->products()->attach($product_id, $updateData); 
         } else {
             $oldCount = $store->products->find($product->id)->pivot->count;
             $updateData = ['count' => $data->count + $oldCount];
             $product_id = $product->id;
-            
-            return $store->products()->updateExistingPivot($product_id, $updateData); 
-        }
-
-                
+            return $store->products()->updateExistingPivot($product_id, $updateData);
     }
 }

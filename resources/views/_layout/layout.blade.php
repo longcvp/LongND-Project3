@@ -51,7 +51,7 @@
                   <a class="navbar-brand" href="{{ route('users.index') }}">{{ __('layout.manage_store')}}</a>
                 @endguest
                 </div>
-                @guest           
+                @guest
                 @elseif(Auth::user()->is_root == ROOT)
                     <ul class="nav navbar-nav">
                       <li><a href="{{ route('admin.index') }}">{{ __('layout.manage_user_store')}}</a></li>
@@ -60,7 +60,7 @@
                 @else
                     <ul class="nav navbar-nav">
                       <li><a href="{{ route('users.index') }}">{{ __('layout.product_title')}}</a></li>
-                    </ul>                          
+                    </ul>
                 @endguest
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown navbar-nav">
@@ -77,12 +77,12 @@
                     @guest
                     <li class="dropdown navbar-nav">
                         <a class="dropdown-toggle" href="{{ route('login.index') }}"><span class="glyphicon glyphicon-log-in"></span> {{ __('auth.login') }}</a>
-                    </li>             
+                    </li>
                     @else
                     <li class="dropdown navbar-nav">
                         <a href="{{ route('admin.index') }}" class="dropdown-toggle" data-toggle="dropdown" style="position: relative; padding-left:50px;">
                             {{ __('layout.welcome', ['name' => (Auth::user()->name == '') ? 'Name' : Auth::user()->name]) }}
-                        </a>    
+                        </a>
                     </li>
                     <li class="dropdown navbar-nav">
                         <a href="{{ route('logout') }}" ><span class="glyphicon glyphicon-log-out"></span> {{ __('auth.logout') }}</a>

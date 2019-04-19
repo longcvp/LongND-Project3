@@ -28,23 +28,23 @@ class StoreExport implements FromCollection, WithMapping, WithHeadings, WithTitl
 
     public function map($store): array
     {
-    	return [
-    		$store->name,
-    		$store->pivot->count,
-    	];
+        return [
+            $store->name,
+            $store->pivot->count,
+        ];
     }
 
     public function headings(): array
     {
-    	return [
-    		'Tên sản phẩm',
-    		'Số lượng',
-    	];    	
+        return [
+            'Tên sản phẩm',
+            'Số lượng',
+        ];      
     }
 
     public function title(): string
     {
-    	$store = $this->store->getProductStore($this->id);
+        $store = $this->store->getProductStore($this->id);
         return 'Store ' . $store->name;
     }
 }

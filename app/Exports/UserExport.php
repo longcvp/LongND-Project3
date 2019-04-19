@@ -25,27 +25,27 @@ class UserExport implements FromCollection, WithHeadings, WithMapping
 
     public function map($user): array
     {
-    	
-    	$data = [
-    		$user->name,
-    		$user->username,
-    		$user->email,
-    	];
-    	foreach ($user->stores as $k => $store) {
-    		$data[] = 'Kho '.($k+1).': '.$store->name;
-    	}
-    	return $data;
+        
+        $data = [
+            $user->name,
+            $user->username,
+            $user->email,
+        ];
+        foreach ($user->stores as $k => $store) {
+            $data[] = 'Kho '.($k+1).': '.$store->name;
+        }
+        return $data;
     }
 
     public function headings(): array
     {
 
-    	$data = [
-    		'Tên nhân viên',
-    		'Tên đăng nhập',
-    		'Địa chỉ email',
-    	]; 	
-    	return $data;	
+        $data = [
+            'Tên nhân viên',
+            'Tên đăng nhập',
+            'Địa chỉ email',
+        ];  
+        return $data;   
     }
 
 }

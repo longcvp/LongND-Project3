@@ -32,4 +32,3 @@ return [
     'type_old' => 'Sản phẩm đã có',
     'excel' => 'Xuất file excel'
 ];
-    

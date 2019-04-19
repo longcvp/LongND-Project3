@@ -113,7 +113,7 @@
                             @endif
                         </div>
                     </div>
-                    </div>                                   
+                    </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
@@ -121,7 +121,6 @@
                             </button>
                             <a href="{{ route('stores.show', $store->id) }}" type="button" class="btn btn-info">{{ __('root.back') }}</a>
                         </div>
-
                     </div>
                  </form>
         </div>

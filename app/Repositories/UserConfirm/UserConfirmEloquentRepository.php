@@ -17,14 +17,4 @@ class UserConfirmEloquentRepository extends EloquentRepository implements UserCo
         return \App\Models\UserConfirm::class;
     }
 
-    // public function getUserByToken($token)
-    // {
-    // 	return $this->_model->findByToken($token);
-    // }
-
-    // public function deleteToken($token)
-    // {
-    //     return $this->_model->deleteByToken($token);
-    // }
-
 }

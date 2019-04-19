@@ -25,42 +25,41 @@
                 @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ __('auth.login') }}</div>
-
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}" enctype="multipart/form-data" >
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                     <label for="username" class="col-md-4 control-label">{{ __('auth.username') }}</label>
-
                                     <div class="col-md-6">
                                         <input id="username" type="string" class="form-control" name="username" value="{{ old('username') }}" autofocus>
-
                                         @if ($errors->has('username'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('username') }}</strong>
+                                                <strong>
+                                                    {{ $errors->first('username') }}
+                                                </strong>
                                             </span>
                                         @endif
                                     </div>
                                 </div> 
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                     <label for="password" class="col-md-4 control-label">{{ __('auth.password') }}</label>
-
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="password" value="" autofocus>
-
+                                        <input id="password" type="password" class="form-control" name="password">
                                         @if ($errors->has('password'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('password') }}</strong>
+                                                <strong>
+                                                    {{ $errors->first('password') }}
+                                                </strong>
                                             </span>
                                         @endif
                                     </div>
-                                </div>                                                     
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <div class="col-md-4">
                                             <button type="submit" class="btn btn-primary">
                                                 {{ __('auth.login') }}
-                                            </button>                                            
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

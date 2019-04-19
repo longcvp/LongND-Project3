@@ -25,22 +25,22 @@ class StoreUserExport implements FromCollection, WithMapping, WithHeadings
 
     public function map($store): array
     {
-    	$data = [
-    		$store->name,
-    	];
-    	foreach ($store->products as $k => $product) {
-    		$data[] = 'Sản phẩm '.($k+1).': '.$product->name;
-    		$data[] = 'Số lượng : '.$product->pivot->count;
-    	}
-    	return $data;
+        $data = [
+            $store->name,
+        ];
+        foreach ($store->products as $k => $product) {
+            $data[] = 'Sản phẩm '.($k+1).': '.$product->name;
+            $data[] = 'Số lượng : '.$product->pivot->count;
+        }
+        return $data;
     }
 
     public function headings(): array
     {
 
-    	$data = [
-    		'Tên store',
-    	]; 	
-    	return $data;	
+        $data = [
+            'Tên store',
+        ];  
+        return $data;   
     }
 }

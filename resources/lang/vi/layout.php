@@ -12,4 +12,3 @@ return [
     'import' => 'Nhập hàng vào kho',
     'export' => 'Xuất hàng trong kho',
 ];
-    

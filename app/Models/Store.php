@@ -96,5 +96,6 @@ class Store extends Model
             $updateData = ['count' => $data->count + $oldCount];
             $product_id = $product->id;
             return $store->products()->updateExistingPivot($product_id, $updateData);
+        }
     }
 }

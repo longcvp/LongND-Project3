@@ -42,7 +42,7 @@ class AuthController extends Controller
             return redirect()->route('admin.index'); 
         } else {
             $errors = new MessageBag([
-                'errorlogin' => 'Tên đăng nhập hoặc mật khẩu không đúng'
+                'errorlogin' => Lang::get('root.message_login')
             ]);
             return redirect()
                 ->back()
@@ -71,6 +71,6 @@ class AuthController extends Controller
     {
         $this->user->changeData($request);
         return redirect()->route('admin.index')
-                         ->with('success','Mật khẩu của bạn đã được thay đổi');
+                         ->with('success', Lang::get('root.success_user_edit'));
     }
 }

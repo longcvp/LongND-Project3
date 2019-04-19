@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Lang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
@@ -50,7 +51,8 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->user->createUser($request);
-        return redirect()->route('admin.index')->with('success','Thêm nhân viên thành công');
+        return redirect()->route('admin.index')
+                         ->with('success', Lang::get('root.success_user'));
     }
 
     /**
@@ -102,11 +104,11 @@ class UserController extends Controller
     {
         if (is_null($req->checked)) {
             return redirect()->back()
-                             ->with('error', 'Không có user nào được chọn để reset password');
+                             ->with('error', Lang::get('root.error_reset'));
         } else {    
             $this->user->resetPass($req);
             return redirect()->route('admin.index')
-                             ->with('success', 'Reset mật khẩu thành công');
+                             ->with('success', Lang::get('root.error_reset'));
         }
     }
 

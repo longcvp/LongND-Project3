@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use Auth;
+use Lang;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use App\Http\Requests\ExportRequest;
@@ -86,7 +87,7 @@ class StoreController extends Controller
     {
         $this->store->updateExport($req);
         return redirect()->route('stores.show', $req->store_id)
-                         ->with('success', 'Xuất hàng thành công!');
+                         ->with('success', Lang::get('root.success_export'));
     }
 
     public function export($id)
@@ -105,7 +106,7 @@ class StoreController extends Controller
     {
         $this->store->updateImport($req);
         return redirect()->route('stores.show', $req->store_id)
-                         ->with('success', 'Nhập hàng hàng thành công!');
+                         ->with('success', Lang::get('root.success_import'));
     }
     /**
      * Update the specified resource in storage.

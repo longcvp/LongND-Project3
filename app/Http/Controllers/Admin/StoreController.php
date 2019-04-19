@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Lang;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use App\Http\Controllers\Controller;
@@ -53,7 +54,7 @@ class StoreController extends Controller
     {
         $this->store->createStore($request);
         return redirect()->route('stores.index')
-                            ->with('success', 'Thêm kho thành công');
+                            ->with('success', Lang::get('root.success_store'));
     }
 
     /**
@@ -91,7 +92,7 @@ class StoreController extends Controller
     {
         $this->store->editStore($request);
         return redirect()->route('stores.index')
-                         ->with('success', 'Thêm kho thành công');
+                         ->with('success', Lang::get('root.success_store_edit'));
     }
 
     /**

@@ -30,5 +30,13 @@ return [
     'count_import' => 'Nhập số lượng hàng',
     'type_new' => 'Sản phẩm mới',
     'type_old' => 'Sản phẩm đã có',
-    'excel' => 'Xuất file excel'
+    'excel' => 'Xuất file excel',
+    'success_store' => 'Thêm kho thành công',
+    'success_import' => 'Nhập hàng thành công',
+    'success_export' => 'Xuất hàng thành công',
+    'success_store_edit' => 'Sửa thông tin kho thành công',
+    'success_user_edit' => 'Cập nhật thông tin thành công',
+    'message_login' => 'Tên đăng nhập hoặc mật khẩu không đúng',
+    'success_reset' => 'Reset mật khẩu thành công',
+    'error_reset' => 'Chọn 1 hoặc nhiều người để reset'
 ];

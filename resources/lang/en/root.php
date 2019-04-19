@@ -30,7 +30,13 @@ return [
     'count_import' => 'Import count',
     'type_new' => 'New Product',
     'type_old' => 'Old Product',
-    'excel' => 'Export Excel'
-
+    'excel' => 'Export Excel',
+    'success_store' => 'Create store successful',
+    'success_import' => 'Import product successful',
+    'success_export' => 'Export product successful',
+    'success_store_edit' => 'Change store infomation successful',
+    'success_user_edit' => 'Change user infomation successful',
+    'message_login' => 'Username or password is incorrect',
+    'success_reset' => 'Reset password successful',
+    'error_reset' => 'Nobody is selected to reset'
 ];
-    

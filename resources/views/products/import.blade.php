@@ -65,7 +65,7 @@
                                 </span>
                             @endif
                         </div>
-                    </div>                                        
+                    </div>
                     <div class="form-group{{ $errors->has('product_id') ? ' has-error' : '' }}" id="product_trans">
                         <label for="product_id" class="col-md-4 control-label">{{ __('root.choose_product') }} <span class="error">*</span></label>
 
@@ -147,7 +147,7 @@
             } else {
                 $('#product_new').hide();
                 $('#product_trans').hide();
-                $('#product_count').hide();                
+                $('#product_count').hide();
             }
         });
         $("select[name='product_id']").on('change',function() {
@@ -158,9 +158,9 @@
                     headers: {
                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                    dataType   :'JSON',
+                    dataType :'JSON',
                     url:'/export/change/user',
-                    data:{store_id: {{ $store->id }} ,product_id: product_id},
+                    data:{store_id: {{ $store->id }} , product_id: product_id},
                     success:function(result){
                         $('#product_count').show();
                         $('#count_product').val(result);

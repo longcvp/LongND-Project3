@@ -29,4 +29,9 @@ class ProductEloquentRepository extends EloquentRepository implements ProductRep
                                 ->first();
         return $rs->count;
     }
+
+    public function updateImport($data)
+    {
+        return $this->_model->updateImport($data);
+    }
 }
